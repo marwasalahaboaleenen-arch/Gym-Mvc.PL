@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GYMmangment.DAL.Models
+namespace GymManagment.DAL.Models
 {
     public class HealthRecord:BaseEntity
     {
@@ -12,5 +12,13 @@ namespace GYMmangment.DAL.Models
         public decimal weight { get; set; }
         public string bloodType { get; set; }
         public string note { get; set; }
+
+
+        #region RelationShips
+
+
+        public Member Member { get; set; } = default;
+        public int MemberId { get; set; }
+        #endregion
     }
 }

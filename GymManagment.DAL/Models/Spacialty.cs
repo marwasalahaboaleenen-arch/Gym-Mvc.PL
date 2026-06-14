@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GYMmangment.DAL.Models
+namespace GymManagment.DAL.Models
 {
     public enum Spacialty
     {

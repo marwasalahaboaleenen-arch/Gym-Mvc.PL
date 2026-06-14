@@ -2,7 +2,7 @@
 //using GymSystem.FluentConfigration;
 //using Microsoft.EntityFrameworkCore;
 
-using GYMmangment.DAL.Models;
+using GymManagment.DAL.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -18,6 +18,24 @@ namespace GYMmangment.DAL.FluentConfigration
 
             builder.Property(x => x.Email)
                    .HasColumnType("varchar(50)");
+
+            builder.HasIndex(X => X.Email).IsUnique();
+            builder.HasIndex(X => X.Phone).IsUnique();
+
+            builder.ToTable(tb =>
+            {
+                tb.HasCheckConstraint("Email Like", "Email Like '_%@_%._%'");
+                tb.HasCheckConstraint("PhoneCheck", "Phone Like '010%' or Phone Like '011% or Phone Like '012%''");
+            });
+
+            builder.OwnsOne(X => X.address, address =>
+            {
+                address.Property(X => X.Street).HasColumnName("Street").HasColumnType("varchar").HasMaxLength(30);
+                address.Property(X => X.city).HasColumnName("City").HasColumnType("varchar").HasMaxLength(30);
+
+            });
         }
+
+        
     }
 }

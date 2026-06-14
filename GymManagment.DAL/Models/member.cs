@@ -1,14 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GYMmangment.DAL.Models
+﻿
+namespace GymManagment.DAL.Models
 {
-    internal class Member:GymUser
+   public class Member:GymUser
     {
         public string? photo   { get; set; }
+
+        #region RelationShips
+        public HealthRecord HealthRecord { get; set; } = default;
+
+        public ICollection<Membership> plans { get; set; }
+
+     public ICollection<Booking> MemberSession { get; set; }
+
+        public static implicit operator Member(Member v)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
 
     }
 }

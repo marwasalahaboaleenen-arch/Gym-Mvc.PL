@@ -1,7 +1,6 @@
-﻿using GymSystem.Models;
+﻿using GymManagment.DAL.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
 namespace GymSystem.FluentConfigration
 {
     public class PlanConfigration : IEntityTypeConfiguration<Plan>

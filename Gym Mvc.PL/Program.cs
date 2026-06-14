@@ -1,3 +1,11 @@
+using Gym_Mvc.PL.Models;
+using GymManagment.BLL.Services.Classes;
+using GymManagment.BLL.Services.Interfaces;
+using GymManagment.DAL.repositries.Classes;
+using GymManagment.DAL.repositries.Classes;
+using GymManagment.DAL.repositries.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
+
 namespace Gym_Mvc.PL
 {
     public class Program
@@ -9,6 +17,10 @@ namespace Gym_Mvc.PL
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+
+            builder.Services.AddScoped(typeof(IGenericRepository<>),typeof (GenericRepository<>));
+            builder.Services.AddScoped<IMemberService, MemberService>();
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

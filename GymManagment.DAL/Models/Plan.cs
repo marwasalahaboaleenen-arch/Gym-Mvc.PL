@@ -1,6 +1,9 @@
-﻿using GYMmangment.DAL.Models;
+﻿
+using GymManagment.DAL.Models;
 
-namespace GymSystem.Models
+
+
+namespace GymManagment.DAL.Models
 {
     public class  Plan: BaseEntity
     {
@@ -16,7 +19,9 @@ namespace GymSystem.Models
 
         public  bool IsActive { get; set; }
 
-        
+        #region RelationShips
+        public ICollection<Membership> Members { get; set; }
+        #endregion
 
     }
 }

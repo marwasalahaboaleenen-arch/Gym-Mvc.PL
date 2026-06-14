@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GYMmangment.DAL.Models
+namespace GymManagment.DAL.Models
 {
-    public class GymUser:BaseEntity
+    public  abstract class GymUser:BaseEntity
     {
         public string  Name { get; set; }
         public string Email { get; set; }
@@ -21,7 +21,7 @@ namespace GYMmangment.DAL.Models
     [Owned]
     public class address
     {
-        public string BuildingNum { get; set; }
+        public int BuildingNum { get; set; }
         public string Street { get; set; }
         public string city { get; set; }
 
