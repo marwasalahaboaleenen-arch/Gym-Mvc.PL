@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GymManagment.DAL.Models
 {
-    public class Trainer:GymUser
+    public class Trainer :GymUser
     {
         public  Spacialty specialty { get; set; }
 

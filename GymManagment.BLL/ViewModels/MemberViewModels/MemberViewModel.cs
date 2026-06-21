@@ -23,8 +23,8 @@ namespace GymManagment.BLL.ViewModels.MemberViewModels
 
 
         //Member Details
-        public string DateOfBirth { get; set; }
-        public string Address { get; set; }
+        public string Address { get; set; } = string.Empty;
+        public string DateOfBirth { get; set; } = string.Empty;
         public string PlanName { get; set; } 
         public string MembershipStartDate { get; set; }
         public string MembershipEndDate { get; set; }

@@ -16,14 +16,14 @@ namespace GymManagment.DAL.Models
 
         public enumGender Gender { get; set; }
 
-        public address  address { get; set; }
+        public Address  address { get; set; }
     }
     [Owned]
-    public class address
+    public class Address
     {
-        public int BuildingNum { get; set; }
-        public string Street { get; set; }
-        public string city { get; set; }
+        public int BuildingNumb { get; set; }
+        public string Street { get; set; } = string.Empty;
+        public string City { get; set; } = string.Empty;
 
 
 

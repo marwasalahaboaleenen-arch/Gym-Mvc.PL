@@ -18,7 +18,7 @@ namespace GymManagment.DAL.Models
         
 
         #region RelationShips
-        public Trainer Trainer { get; set; }
+        public Category Trainer { get; set; }
 
         public int TrainerId { get; set; } 
         
@@ -26,6 +26,7 @@ namespace GymManagment.DAL.Models
         public int CatgoryId { get; set; }
 
         public ICollection<Booking> SessionMember { get; set; }
+        public DateTime StartDate { get; set; }
         #endregion
     }
 }

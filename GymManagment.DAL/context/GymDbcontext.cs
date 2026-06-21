@@ -17,7 +17,7 @@ namespace GymSystem.Context
         }
         public DbSet<Plan> Plans { get; set; }
         public DbSet<Member> Members { get; set; }
-        public DbSet<Trainer> Trainers { get; set; }
+        public DbSet<Category> Trainers { get; set; }
         public DbSet<Session> Sessions { get; set; }
         public DbSet<Catgory> Categories { get; set; }
         public DbSet<Membership> Memberships { get; set; }
