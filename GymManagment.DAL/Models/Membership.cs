@@ -9,8 +9,8 @@ namespace GymManagment.DAL.Models
 {
     public class Membership : BaseEntity
     {
-        public Member Member { get; set; }
-        public Member MemberId { get; set; }
+        public member Member { get; set; }
+        public member MemberId { get; set; }
         public Plan Plan { get; set; }
         public Plan PlanId { get; set; }
 

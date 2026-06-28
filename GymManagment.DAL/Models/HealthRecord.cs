@@ -17,7 +17,7 @@ namespace GymManagment.DAL.Models
         #region RelationShips
 
 
-        public Member Member { get; set; } = default;
+        public member Member { get; set; } = default;
         public int MemberId { get; set; }
         #endregion
     }

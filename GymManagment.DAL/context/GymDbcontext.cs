@@ -16,7 +16,7 @@ namespace GymSystem.Context
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
         public DbSet<Plan> Plans { get; set; }
-        public DbSet<Member> Members { get; set; }
+        public DbSet<member> Members { get; set; }
         public DbSet<Category> Trainers { get; set; }
         public DbSet<Session> Sessions { get; set; }
         public DbSet<Catgory> Categories { get; set; }

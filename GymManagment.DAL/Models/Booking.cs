@@ -10,8 +10,8 @@ namespace GymManagment.DAL.Models
     public class Booking : BaseEntity
     {
 
-        public Member Member { get; set; }
-        public Member MemberId { get; set; }
+        public member Member { get; set; }
+        public member MemberId { get; set; }
 
         public Session Session { get; set; }
         public Session SessionId { get; set; }

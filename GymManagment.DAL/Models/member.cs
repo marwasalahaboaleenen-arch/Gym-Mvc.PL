@@ -1,7 +1,7 @@
 ﻿
 namespace GymManagment.DAL.Models
 {
-   public class Member:GymUser
+   public class member:GymUser
     {
         public string? photo   { get; set; }
         public Address Address { get; set; } = null!;
@@ -12,7 +12,7 @@ namespace GymManagment.DAL.Models
 
      public ICollection<Booking> MemberSession { get; set; }
 
-        public static implicit operator Member(Member v)
+        public static implicit operator member(member v)
         {
             throw new NotImplementedException();
         }

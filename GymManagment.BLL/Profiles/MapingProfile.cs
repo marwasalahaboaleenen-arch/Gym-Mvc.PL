@@ -20,7 +20,7 @@ namespace GymManagment.BLL.Profiles
         }
         private void MemberProfiles()
         {
-            CreateMap<Member, MemberViewModel>()
+            CreateMap<member, MemberViewModel>()
                   .ForMember(
                       dest => dest.Address,
                       opt => opt.MapFrom(src =>
@@ -34,7 +34,7 @@ namespace GymManagment.BLL.Profiles
 
             CreateMap<HealthRecord, HealthRecordViewModel>().ReverseMap();
 
-            CreateMap<Member, MemberToUpdateViewModel>()
+            CreateMap<member, MemberToUpdateViewModel>()
                 .ForMember(
                     dest => dest.City,
                     opt => opt.MapFrom(src => src.Address.City)
@@ -48,7 +48,7 @@ namespace GymManagment.BLL.Profiles
                     opt => opt.MapFrom(src => src.Address.BuildingNumb)
                 );
 
-            CreateMap<MemberToUpdateViewModel, Member>()
+            CreateMap<MemberToUpdateViewModel, member>()
                 .ForMember(dest => dest.photo, opt => opt.Ignore())
                 .ForMember(dest => dest.Name, opt => opt.Ignore())
                 .AfterMap((src, dest) =>
@@ -59,7 +59,7 @@ namespace GymManagment.BLL.Profiles
                     dest.Address.City = src.City;
                     dest.Address.Street = src.Street;
                 });
-            CreateMap<MemberToUpdateViewModel, Member>()
+            CreateMap<MemberToUpdateViewModel, member>()
                 .ForMember(dest => dest.Address, opt => opt.MapFrom(src => new Address()
                 {
                     BuildingNumb = src.BuildingNumber,

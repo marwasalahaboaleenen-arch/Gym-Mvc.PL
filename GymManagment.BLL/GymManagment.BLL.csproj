@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.3.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.11" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\GymManagment.DAL\GymManagment.DAL.csproj" />
   </ItemGroup>
 

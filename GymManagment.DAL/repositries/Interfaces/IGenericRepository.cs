@@ -27,5 +27,6 @@ namespace GymManagment.DAL.repositries.Interfaces
 
 
         Task<TEntity> FristOrDefaultAsync(Expression<Func<TEntity, bool>>predicate , bool tracking = false, CancellationToken ct = default);
+        Task<int> CountAsync(Expression<Func<TEntity, bool>>? condition = null, CancellationToken ct = default);
     }
 }

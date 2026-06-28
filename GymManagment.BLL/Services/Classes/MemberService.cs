@@ -32,13 +32,13 @@ namespace GymManagment.BLL.Services.Classes
         public async Task<bool> CreateMemberAsync(CreateMemberViewModel model, CancellationToken ct = default)
         {
             //Email Exist or Not
-            var EmailExist = await _unitOfWork.GetRepository<Member>().AnyAsync(X => X.Email == model.Email);
+            var EmailExist = await _unitOfWork.GetRepository<member>().AnyAsync(X => X.Email == model.Email);
             //phone Exist or Not
-            var PhoneExist = await _unitOfWork.GetRepository<Member>().AnyAsync(X => X.Phone == model.Phone);
+            var PhoneExist = await _unitOfWork.GetRepository<member>().AnyAsync(X => X.Phone == model.Phone);
             if (EmailExist || PhoneExist) return false;
 
-            var member = _mapper.Map<Member>(model);
-             _unitOfWork.GetRepository<Member>().AddAsync(member);
+            var member = _mapper.Map<member>(model);
+             _unitOfWork.GetRepository<member>().AddAsync(member);
             var result = await _unitOfWork.SaveChangesAsync();
             return result > 0;
 
@@ -48,20 +48,20 @@ namespace GymManagment.BLL.Services.Classes
 
         public async Task<bool> DeleteMemberAsync(int memberId, CancellationToken ct = default)
         {
-            var member = await _unitOfWork.GetRepository<Member>().GetByIdAsync(memberId,ct);
+            var member = await _unitOfWork.GetRepository<member>().GetByIdAsync(memberId,ct);
 
             if (member == null) return false;
 
             var HasActiveBooking = await _unitOfWork.GetRepository<Booking>().AnyAsync(B => B.MemberId == memberId && B.Id = ID);
                 if(HasActiveBooking) return false;
-                _unitOfWork.GetRepository<Member>().DeleteAsync(member);
+                _unitOfWork.GetRepository<member>().DeleteAsync(member);
             var result = await _unitOfWork.SaveChangesAsync();
             return result > 0;
         }
 
         public async Task<IEnumerable<MemberViewModel>> GetAllAsync(CancellationToken ct)
         {
-           _unitOfWork.GetRepository<Member>().GetAllAsync(ct: ct);
+           _unitOfWork.GetRepository<member>().GetAllAsync(ct: ct);
 
             if (!members.Any())
                 return Enumerable.Empty<MemberViewModel>();
@@ -87,7 +87,7 @@ namespace GymManagment.BLL.Services.Classes
 
         public async Task<MemberViewModel?> GetMemberDetailsByIdAsync(int memberId, CancellationToken ct = default)
         {
-            var member = await _unitOfWork.GetRepository<Member>().GetByIdAsync(memberId, ct);
+            var member = await _unitOfWork.GetRepository<member>().GetByIdAsync(memberId, ct);
 
 
             if (member == null) return null;
@@ -95,7 +95,7 @@ namespace GymManagment.BLL.Services.Classes
             //Table = Member
             //Return = MemberViewModel
 
-            var model = _mapper.Map< Member,MemberViewModel>(member);
+            var model = _mapper.Map< member,MemberViewModel>(member);
 
             //Check if Member Has ActiveMembership or Not
             if (ActiveMembership is not null)
@@ -113,7 +113,7 @@ namespace GymManagment.BLL.Services.Classes
 
         public async Task<HealthRecordViewModel?> GetMemberHealthRecord(int memberId, CancellationToken ct = default)
         {
-            var recored = await _unitOfWork.GetRepository<Member>().FristOrDefaultAsync(X => X.MemberId == memberId, ct: ct);
+            var recored = await _unitOfWork.GetRepository<member>().FristOrDefaultAsync(X => X.MemberId == memberId, ct: ct);
             if (recored is null) return null;
             else
                 return _mapper.Map<HealthRecord, HealthRecordViewModel>(recored);
@@ -121,7 +121,7 @@ namespace GymManagment.BLL.Services.Classes
 
         public async Task<MemberToUpdateViewModel> GetMemberToUpdateAsync(int memberId, CancellationToken ct = default)
         {
-           var member = await _unitOfWork.GetRepository<Member>().GetByIdAsync(memberId, ct);
+           var member = await _unitOfWork.GetRepository<member>().GetByIdAsync(memberId, ct);
             if (member is null) return null;
             else
                 return _mapper.Map<MemberToUpdateViewModel>(member);
@@ -131,19 +131,19 @@ namespace GymManagment.BLL.Services.Classes
         {
 
             //Get Member
-            var member = await _unitOfWork.GetRepository<Member>().GetByIdAsync(id, ct);
+            var member = await _unitOfWork.GetRepository<member>().GetByIdAsync(id, ct);
 
             //check if Any other User Has The Same Phone or Email
 
 
-                var EmailExist = await _unitOfWork.GetRepository<Member>().AnyAsync(M => M.Email == model.Email && M.Id !=id);
-            var PhoneExist = await _unitOfWork.GetRepository<Member>().AnyAsync(M = M => M.Phone == model.Phone && M.Id !=id);
+                var EmailExist = await _unitOfWork.GetRepository<member>().AnyAsync(M => M.Email == model.Email && M.Id !=id);
+            var PhoneExist = await _unitOfWork.GetRepository<member>().AnyAsync(M = M => M.Phone == model.Phone && M.Id !=id);
 
             if (EmailExist || PhoneExist) return false;
-            {   _mapper.Map<Member>(model);
+            {   _mapper.Map<member>(model);
                 member.UpadatedAt = DateTime.Now;
 
-                _unitOfWork.GetRepository<Member>().UpdateAsync(member);
+                _unitOfWork.GetRepository<member>().UpdateAsync(member);
                 var result = await _unitOfWork.SaveChangesAsync(ct);    
                 return result > 0;
 
